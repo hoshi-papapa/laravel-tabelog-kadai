@@ -1,0 +1,87 @@
+/* ページ全体の設定 */
+body {
+    font-size: 16px; 
+}
+
+/* マイページの設定 */
+.mypage_style { 
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.mypage_style a {
+    color: black;
+    text-decoration: none;
+}
+.mypage_style a:hover {
+    text-decoration: underline;
+}
+.emphasize {
+    font-weight: bold;
+    color: #ff0000; /* 赤色にする例 */
+    font-size: 1.2em;
+    background-color: #ffffcc; /* 背景色を薄い黄色にする例 */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* 一覧画面の「★」表示設定 */
+.star-rating {
+    position: relative;
+    font-size: 18px;
+    width: 90px; 
+    height: 18px;
+    display: inline-block;
+
+    &::before, &::after {
+        content: "★★★★★";
+        position: absolute;
+        height: 18px;
+        line-height: 18px;
+        display: inline-block;
+    }
+
+    &::before {
+        color:  #b2b2b2;
+    }
+
+    &::after {
+        color:  #ffc107;    
+        overflow: hidden;
+        width: calc(var(--rate) * 100%);
+        white-space: nowrap;
+    }
+
+    &[data-rate="0"]::after { --rate: 0; }
+    &[data-rate="0.5"]::after { --rate: 0.1; }
+    &[data-rate="1"]::after { --rate: 0.2; }
+    &[data-rate="1.5"]::after { --rate: 0.3; }
+    &[data-rate="2"]::after { --rate: 0.4; }
+    &[data-rate="2.5"]::after { --rate: 0.5; }
+    &[data-rate="3"]::after { --rate: 0.6; }
+    &[data-rate="3.5"]::after { --rate: 0.7; }
+    &[data-rate="4"]::after { --rate: 0.8; }
+    &[data-rate="4.5"]::after { --rate: 0.9; }
+    &[data-rate="5"]::after { --rate: 1; }
+}
+
+/* レビュー投稿画面の「★」表示設定 */
+.rating-form .star-btn {
+    font-size: 2em;
+    cursor: pointer;
+    color: lightgray;
+    padding: 0; /* 余白をなくす */
+    margin: 0; /* 余白をなくす */
+    background-color: transparent; /* 背景を透明にする */
+    border: none; /* 枠線をなくす */
+}
+.star-btn.selected {
+    color: gold;
+}
+.star-btn.hover {
+    color: gold;
+}
+
+.rating-form .star-btn:hover {
+	cursor:pointer;
+}

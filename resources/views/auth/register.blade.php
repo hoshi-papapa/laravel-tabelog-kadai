@@ -1,23 +1,62 @@
 <x-guest-layout>
+    {{-- <!-- バリデーションエラーがある場合は表示 -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
-        <div>
+        <div class="mb-4">
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>        
+        
+        <!-- ニックネーム -->
+        <div class="mb-4">
+            <x-input-label for="nickname" :value="__('ニックネーム')" />
+            <x-text-input id="nickname" class="block mt-1 w-full" type="text" name="nickname" :value="old('nickname')" required autofocus autocomplete="nickname" />
+            <x-input-error :messages="$errors->get('nickname')" class="mt-2" />
+        </div>        
+        
+        <!-- 電話番号 -->
+        <div class="mb-4">
+            <x-input-label for="phone_number" :value="__('電話番号')" />
+            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" required autofocus autocomplete="phone_number" />
+            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
+        <div class="mb-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- 職業 -->
+        <div class="mb-4">
+            <x-input-label for="occupation" :value="__('職業')" />
+            <x-text-input id="occupation" class="block mt-1 w-full" type="text" name="occupation" :value="old('occupation')" autofocus autocomplete="occupation" />
+            <x-input-error :messages="$errors->get('occupation')" class="mt-2" />
+        </div>
+
+        <!-- 年齢 -->
+        <div class="mb-4">
+            <x-input-label for="age" :value="__('年齢')" />
+            <x-text-input id="age" class="block mt-1 w-full" type="number" name="age" :value="old('age')" autofocus autocomplete="age" />
+            <x-input-error :messages="$errors->get('age')" class="mt-2" />
+        </div>       
+
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mb-4">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
@@ -29,7 +68,7 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mb-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
