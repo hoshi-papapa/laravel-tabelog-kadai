@@ -8,8 +8,6 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +20,13 @@ use Illuminate\Http\Request;
 |
 */
 
-route::get('/hello', function () {
+Route::get('/hello', function () {
     return view('test');
 });
 
 //ユーザーの登録機能
-Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('/register', 'Auth\RegisterController@register');
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 // 'auth.php'ファイルの内容を現在のルート定義ファイルに取り込むためのコード
 require __DIR__ . '/auth.php';
