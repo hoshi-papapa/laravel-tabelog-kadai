@@ -12,7 +12,13 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: undefined,
-            },
-        },
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: 'assets/[name].[ext]',
+            }
+        }
     },
+    modulePreload: {
+        polyfill: false,
+    }
 });
