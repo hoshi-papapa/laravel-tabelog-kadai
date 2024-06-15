@@ -28,17 +28,7 @@
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <!-- Script to remove specific stylesheet link tag -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const links = document.getElementsByTagName('link');
-                for (let i = 0; i < links.length; i++) {
-                    if (links[i].href === 'https://nagoyameshi-hoshi-b940707078bf.herokuapp.com/build/assets/app.css') {
-                        links[i].parentNode.removeChild(links[i]);
-                    }
-                }
-            });
-        </script>
+        
     </head>
     <body>
         <div id="app">
@@ -55,5 +45,5 @@
 
         <!-- Scripts -->
         <script src="https://js.stripe.com/v3/"></script>
-    </body>
+        </body>
 </html>
