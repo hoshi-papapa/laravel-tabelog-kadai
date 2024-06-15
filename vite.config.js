@@ -9,9 +9,6 @@ export default defineConfig({
         }),
     ],
     build: {
-        modulePreload: {
-            polyfill: false,
-        },
         rollupOptions: {
             output: {
                 manualChunks: undefined,
@@ -20,5 +17,6 @@ export default defineConfig({
                 assetFileNames: 'assets/[name].[ext]'
             }
         }
-    }
+    },
+    modulePreload: false // ここに直接追加
 });
