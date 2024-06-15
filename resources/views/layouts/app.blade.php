@@ -28,12 +28,12 @@
         {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <!-- Script to remove modulepreload link tags -->
+        <!-- Script to remove specific stylesheet link tag -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const links = document.getElementsByTagName('link');
                 for (let i = 0; i < links.length; i++) {
-                    if (links[i].rel === 'modulepreload') {
+                    if (links[i].href === 'https://nagoyameshi-hoshi-b940707078bf.herokuapp.com/build/assets/app.css') {
                         links[i].parentNode.removeChild(links[i]);
                     }
                 }
