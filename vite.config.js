@@ -1,18 +1,17 @@
+// vite.config.js
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
-    plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
-    ],
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks: undefined // Disable modulepreload
-            }
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Disable modulepreload
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         }
+      }
     }
+  }
 });
