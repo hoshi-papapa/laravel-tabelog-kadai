@@ -863,10 +863,10 @@
                 "doctrine/dbal": "2.*|3.*",
                 "laravel/framework": ">=5.5",
                 "php": ">=7.0.0",
-                "symfony/dom-crawler": "~3.1|~4.0|~5.0"
+                "symfony/dom-crawler": "~3.1|~4.0|~5.0",
+                "fzaninotto/faker": "~1.4"
             },
             "require-dev": {
-                "fzaninotto/faker": "~1.4",
                 "intervention/image": "~2.3",
                 "laravel/browser-kit-testing": "^6.0",
                 "laravel/laravel": ">=5.5",
