@@ -10,7 +10,15 @@ export default defineConfig({
     ],
     build: {
         modulePreload: {
-            polyfill: false
+            polyfill: false,
+        },
+        rollupOptions: {
+            output: {
+                manualChunks: undefined,
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: 'assets/[name].[ext]'
+            }
         }
     }
 });
