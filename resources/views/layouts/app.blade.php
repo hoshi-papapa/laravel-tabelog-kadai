@@ -29,7 +29,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <!-- Script to remove specific stylesheet link tag -->
-        <script>
+        {{-- <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const links = document.getElementsByTagName('link');
                 for (let i = 0; i < links.length; i++) {
@@ -38,7 +38,7 @@
                     }
                 }
             });
-        </script>
+        </script> --}}
     </head>
     <body>
         <div id="app">
