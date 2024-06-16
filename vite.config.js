@@ -11,12 +11,14 @@ export default defineConfig({
     build: {
         rollupOptions: {
             output: {
-                manualChunks: (id) => {
-                    if (id.includes('app.css')) {
-                        return 'ignore';
-                    }
-                },
-            },
-        },
+                manualChunks: undefined,
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: 'assets/[name].[ext]',
+            }
+        }
     },
+    modulePreload: {
+        polyfill: false,
+    }
 });
