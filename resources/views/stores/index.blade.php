@@ -118,7 +118,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{$store->name}}</h5>
+                                <h5 class="card-title">{{$store->nickname}}</h5>
                                 @if ($store->average_review)
                                     <div style="display: flex; align-items: center;" class="mb-2">
                                         <div class="star-rating" data-rate={{ round($store->average_review * 2) /2 }}></div>
