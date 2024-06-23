@@ -7,6 +7,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/hello', function () {
     return view('test');
 });
+
+Route::get('custom-admin-login', [AdminLoginController::class, 'showLoginForm'])->name('custom-admin-login');
+Route::post('custom-admin-login', [AdminLoginController::class, 'login']);
 
 //ユーザーの登録機能
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
