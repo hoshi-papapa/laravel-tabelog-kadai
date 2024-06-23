@@ -145,7 +145,7 @@
         <div class="card mb-3">
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $review->user->name }}</h5>
+                    <h5 class="card-title">{{ $review->user->nickname }}</h5>
                     <div style="display: flex; align-items: center;" class="mb-1">
                         <div class="star-rating" data-rate={{ floatval($review->rating) }}></div>
                         <div class="rating" style="font-size: 1rem;">　{{ number_format(round($review->rating, 1), 1) }}</div>
