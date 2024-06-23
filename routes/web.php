@@ -21,10 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/hello', function () {
-    return view('test');
-});
-
 Route::get('custom-admin-login', [AdminLoginController::class, 'showLoginForm'])->name('custom-admin-login');
 Route::post('custom-admin-login', [AdminLoginController::class, 'login']);
 
@@ -78,6 +74,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::controller(ReservationController::class)->group(function () {
             Route::get('reservation/index', 'index')->name('reservation.index');
             Route::get('reservation/{id}', 'show')->name('reservation.show');
+            Route::delete('reservation/{id}', 'destroy')->name('reservation.destroy');
             Route::get('reservation/create/{store_id}', 'create')->name('reservation.create');
             Route::post('reservation', 'store')->name('reservation.store');
         });

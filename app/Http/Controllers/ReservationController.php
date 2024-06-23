@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Store;
 use App\Models\Reservation;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -71,5 +72,26 @@ class ReservationController extends Controller
 
         return redirect()->route('reservation.create', ['store_id' => $reservation->store_id])
             ->with('success', '予約が完了しました.');
+    }
+
+    public function destroy($id)
+    {
+        $reservation = Reservation::with('store')->findOrFail($id);
+
+        // 現在時刻を取得
+        $now = Carbon::now();
+
+        // 予約の来店日時を取得
+        $reservationDate = Carbon::parse($reservation->reservation_date);
+
+        // もし予約の来店日時が現在時刻より前であれば、キャンセルを許可しない
+        if ($reservationDate->lt($now)) {
+            return redirect()->route('reservation.index')->with('error', '過去の予約はキャンセルできません。');
+        }
+
+        // キャンセル処理
+        $reservation->delete();
+
+        return redirect()->route('reservation.index')->with('success', '予約をキャンセルしました。');
     }
 }

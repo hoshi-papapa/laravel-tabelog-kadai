@@ -29,9 +29,22 @@
                 <p class="card-text mt-5">{{ $reservation->store->description }}</p>
                 <p class="card-text">来店日：{{ \Carbon\Carbon::parse($reservation->reservation_date)->format('Y年n月j日 G時i分') }}</p>
                 <p class="card-text">ご予約人数：{{ $reservation->number_of_people }}名</p>
-                <a href="{{ route('reservation.show', $reservation->id) }}" class="btn btn-outline-primary">
-                    予約の詳細を確認する
-                </a>
+                <div class="d-flex justify-content-start">
+                  <a href="{{ route('reservation.show', $reservation->id) }}" class="btn btn-outline-primary me-2">
+                      予約の詳細を確認する
+                  </a>
+                  @php
+                    $now = \Carbon\Carbon::now();
+                    $reservationDate = \Carbon\Carbon::parse($reservation->reservation_date);
+                  @endphp
+                  @if ($reservationDate->gte($now))
+                    <form action="{{ route('reservation.destroy', $reservation->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger">予約をキャンセルする</button>
+                    </form>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
